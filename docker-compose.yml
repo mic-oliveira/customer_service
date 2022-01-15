@@ -1,0 +1,67 @@
+# For more information: https://laravel.com/docs/sail
+version: '3'
+services:
+  web:
+    image: aronpc/php:8.0
+    working_dir: /app
+    volumes:
+      - ./:/app
+      - composer:/app/.composer/
+      - config:/app/.config/
+      - ash_history:/app/.ash_history
+    depends_on:
+      - mysql
+      - worker
+      - redis
+      - mailhog
+    labels:
+      - traefik.frontend.rule=Host:$APP_NAME.dominus;
+      #- traefik.frontend.rule=PathPrefixStrip:/hefesto-v1.0
+
+  worker:
+    image: aronpc/php:latest-alpine-laravel-worker
+    volumes:
+      - ./:/var/www/app
+      - composer:/var/www/app/.composer/
+      - config:/var/www/app/.config/
+      - ash_history:/var/www/app/.ash_history
+    labels:
+      - traefik.enable=false
+
+  mysql:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: $DB_PASSWORD
+      MYSQL_DATABASE: $DB_DATABASE
+    volumes:
+      - mysql:/data/mysql
+    labels:
+      - 'traefik.enable=false'
+
+  redis:
+    image: redis
+    labels:
+      - traefik.enable=false
+
+  mailhog:
+    image: mailhog/mailhog
+    labels:
+      - traefik.frontend.rule=Host:mail.dominus;
+      #- traefik.port=1025
+
+  adminer:
+    image: adminer
+    labels:
+      - traefik.frontend.rule=Host:adminer.dominus;
+
+networks:
+  default:
+    external:
+      name: web
+
+volumes:
+  composer:
+  config:
+  ash_history:
+  mysql:
