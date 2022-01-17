@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\State;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CityFactory extends Factory
@@ -14,7 +15,10 @@ class CityFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'city_name' => $this->faker->city(),
+            'code' => $this->faker->numerify('#####'),
+            'generic_zipcode' => $this->faker->numerify('#####-###'),
+            'state_id' => State::factory(),
         ];
     }
 }

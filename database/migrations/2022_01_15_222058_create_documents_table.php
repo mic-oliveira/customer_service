@@ -15,6 +15,11 @@ class CreateDocumentsTable extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+            $table->string('document');
+            $table->integer('type');
+            $table->date('emisison_date');
+            $table->boolean('verified')->default(false);
+            $table->json('metadata')->nullable();
             $table->timestamps();
         });
     }

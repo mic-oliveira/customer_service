@@ -15,6 +15,9 @@ class CreateNeighborhoodsTable extends Migration
     {
         Schema::create('neighborhoods', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('city_id')->constrained('cities');
+            $table->json('metadata')->nullable();
             $table->timestamps();
         });
     }

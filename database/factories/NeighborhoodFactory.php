@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\City;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class NeighborhoodFactory extends Factory
@@ -14,7 +15,8 @@ class NeighborhoodFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'city_id' => City::factory()
         ];
     }
 }
