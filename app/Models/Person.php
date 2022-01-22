@@ -19,4 +19,9 @@ class Person extends Model
     {
         return $this->hasMany(Address::class, 'person_id');
     }
+
+    public function documents(): hasMany
+    {
+        return $this->hasMany(Document::class, 'person_id');
+    }
 }

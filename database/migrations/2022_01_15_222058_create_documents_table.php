@@ -19,8 +19,10 @@ class CreateDocumentsTable extends Migration
             $table->integer('type');
             $table->date('emisison_date');
             $table->boolean('verified')->default(false);
+            $table->foreignId('person_id')->constrained('people');
             $table->json('metadata')->nullable();
             $table->timestamps();
+            $table->unique(['document', 'type']);
         });
     }
 
