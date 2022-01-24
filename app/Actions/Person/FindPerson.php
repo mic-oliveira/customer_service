@@ -9,8 +9,8 @@ class FindPerson
 {
     use AsAction;
 
-    public function handle(int|string $id)
+    public function handle(string|int $person_id)
     {
-        return Person::findOrFail($id);
+        return Person::with(['addresses', 'addresses.neighborhood', 'documents'])->findOrFail($person_id);
     }
 }

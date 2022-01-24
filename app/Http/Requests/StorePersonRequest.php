@@ -13,7 +13,7 @@ class StorePersonRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class StorePersonRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "name" => ['required'],
+            "status" => ['required'],
+            "birthdate" => ['required'],
+            "addresses" => ['required'],
+            "documents" => ['sometimes', 'required'],
         ];
     }
 }

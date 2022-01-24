@@ -14,12 +14,13 @@ class CreatePeopleTable extends Migration
     public function up()
     {
         Schema::create('people', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('name');
             $table->integer('status')->default(1);
             $table->date('birthdate');
             $table->json('metadata')->nullable();
             $table->timestamps();
+            $table->unique(['name', 'birthdate']);
         });
     }
 

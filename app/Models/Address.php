@@ -13,6 +13,8 @@ class Address extends Model
     protected $fillable = [
         'public_place',
         'address_type',
+        'number',
+        'person_id',
         'neighborhood_id',
     ];
 

@@ -18,9 +18,9 @@ class CreateAddressesTable extends Migration
             $table->string('public_place');
             $table->string('address_type');
             $table->string('number');
-            $table->string('complement');
-            $table->string('zipcode');
-            $table->foreignId('person_id')->constrained('people');
+            $table->string('complement')->nullable();
+            $table->string('zipcode')->nullable();
+            $table->foreignUuid('person_id')->constrained('people');
             $table->foreignId('neighborhood_id')->constrained('neighborhoods');
             $table->json('metadata')->nullable();
             $table->timestamps();

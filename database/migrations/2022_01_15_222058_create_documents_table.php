@@ -14,12 +14,12 @@ class CreateDocumentsTable extends Migration
     public function up()
     {
         Schema::create('documents', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('document');
             $table->integer('type');
             $table->date('emisison_date');
             $table->boolean('verified')->default(false);
-            $table->foreignId('person_id')->constrained('people');
+            $table->foreignUuid('person_id')->constrained('people');
             $table->json('metadata')->nullable();
             $table->timestamps();
             $table->unique(['document', 'type']);

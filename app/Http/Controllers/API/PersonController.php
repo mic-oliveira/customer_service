@@ -5,10 +5,13 @@ namespace App\Http\Controllers\API;
 use App\Actions\Person\CreatePersonAction;
 use App\Actions\Person\FindPerson;
 use App\Actions\Person\ListPeople;
+use App\Actions\Person\UpdatePerson;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePersonRequest;
 use App\Http\Resources\API\PersonResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Http\Response;
 use Spatie\RouteAttributes\Attributes\Middleware;
 use Spatie\RouteAttributes\Attributes\Resource;
 
@@ -23,7 +26,7 @@ class PersonController extends Controller
         return PersonResource::collection(ListPeople::run());
     }
 
-    public function store(Request $request): PersonResource
+    public function store(StorePersonRequest $request): PersonResource
     {
         return PersonResource::make(CreatePersonAction::run($request->all()));
     }
@@ -34,23 +37,16 @@ class PersonController extends Controller
         return PersonResource::make(FindPerson::run($id));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): PersonResource
     {
-        //
+        return PersonResource::make(UpdatePerson::run($request->all(), $id));
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {
