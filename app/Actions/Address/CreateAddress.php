@@ -16,8 +16,8 @@ class CreateAddress
 
     public function handle(array $address): Address
     {
-        $address = $this->address->fill($address);
-        $address->saveOrFail();
-        return $address;
+        $createdAddress = new Address();
+        $createdAddress->fill($address)->saveOrFail();
+        return $createdAddress;
     }
 }

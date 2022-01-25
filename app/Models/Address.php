@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Jamesh\Uuid\HasUuid;
 
 class Address extends Model
 {
     use HasFactory;
+    use HasUuid;
 
     protected $fillable = [
         'public_place',

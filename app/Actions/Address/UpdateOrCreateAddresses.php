@@ -13,7 +13,7 @@ class UpdateOrCreateAddresses
         $createdOrUpdatedAddresses = collect();
         foreach ($addresses as $address) {
             $createdOrUpdatedAddresses->add(
-                UpdateOrCreateAddress::run(array_merge($address, ['person_id' => $person_id]))
+                UpdateOrCreateAddress::run(array_merge($address, ['person_id' => $person_id]), $address['id'] ?? null)
             );
         }
     }

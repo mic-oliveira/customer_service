@@ -16,8 +16,8 @@ class CreateDocument
 
     public function handle(array $document): Document
     {
-        $createdDocument = $this->document->fill($document);
-        $createdDocument->saveOrFail();
+        $createdDocument = new Document();
+        $createdDocument->fill($document)->saveOrFail();
         return $createdDocument->refresh();
     }
 }

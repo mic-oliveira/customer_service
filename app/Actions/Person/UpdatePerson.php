@@ -3,6 +3,7 @@
 namespace App\Actions\Person;
 
 use App\Actions\Address\UpdateOrCreateAddresses;
+use App\Actions\Document\UpdateOrCreateDocuments;
 use App\Models\Person;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -26,6 +27,9 @@ class UpdatePerson
             $updatedPerson->saveOrFail();
             if (array_key_exists('addresses', $person)) {
                 UpdateOrCreateAddresses::run($person['addresses'], $updatedPerson->id);
+            }
+            if (array_key_exists('documents', $person)) {
+                UpdateOrCreateDocuments::run($person['documents'], $updatedPerson->id);
             }
             DB::commit();
             return $updatedPerson;

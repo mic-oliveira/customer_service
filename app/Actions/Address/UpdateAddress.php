@@ -9,9 +9,9 @@ class UpdateAddress
 {
     use AsAction;
 
-    public function handle(array $address)
+    public function handle(array $address, $id)
     {
-        $updatedAddress = Address::where('person_id', $address['person_id'])->findOrFail($address['id']);
+        $updatedAddress = Address::findOrFail($id);
         $updatedAddress->fill($address);
         $updatedAddress->save();
         return $updatedAddress->refresh();

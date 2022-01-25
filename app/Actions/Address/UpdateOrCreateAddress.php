@@ -9,11 +9,11 @@ class UpdateOrCreateAddress
 {
     use AsAction;
 
-    public function handle(array $address): Address
+    public function handle(array $address, string|int $address_id = null): Address
     {
-        return match (array_key_exists('id', $address)) {
-            true => UpdateAddress::run($address),
-            false => CreateAddress::run($address)
+        return match (empty($address_id)) {
+            true => CreateAddress::run($address),
+            false => UpdateAddress::run($address, $address_id)
         };
     }
 }

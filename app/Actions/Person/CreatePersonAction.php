@@ -4,6 +4,7 @@ namespace App\Actions\Person;
 
 use App\Actions\Address\CreateAddresses;
 use App\Actions\Address\UpdateOrCreateAddresses;
+use App\Actions\Document\UpdateOrCreateDocuments;
 use App\Models\Person;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
@@ -26,9 +27,8 @@ class CreatePersonAction
             $person = $this->person->fill($data);
             $person->saveOrFail();
             $person->refresh();
-            UpdateOrCreateAddresses::run($data['addresses'], $person->id);
-            $person->documents()->createMany($data['documents'] ?? []);
-
+            UpdateOrCreateAddresses::run($data['addresses'] ?? [], $person->id);
+            UpdateOrCreateDocuments::run($data['documents'] ?? [], $person->id);
             DB::commit();
             return FindPerson::run($person->id);
         } catch (\Throwable $exception) {
