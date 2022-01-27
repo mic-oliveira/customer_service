@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\PersonStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -14,7 +15,12 @@ class Person extends Model
 
     protected $fillable = [
         'name',
+        'status',
         'birthdate'
+    ];
+
+    protected $casts = [
+        'status' => PersonStatus::class
     ];
 
     public function addresses(): HasMany

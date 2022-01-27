@@ -6,14 +6,18 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class AddressResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-     */
+    
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            "public_place" => $this->public_place,
+            "address_type" => $this->address_type,
+            "number" => $this->number,
+            "complement" => $this->complement,
+            "zipcode" => $this->zipcode,
+            "neighborhood" => $this->neighborhood->name,
+            "city" => $this->neighborhood->city->city_name,
+            "state" => $this->neighborhood->city->state->name
+        ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Jamesh\Uuid\HasUuid;
 
 class Document extends Model
@@ -16,15 +17,16 @@ class Document extends Model
     protected $fillable = [
         'document',
         'type',
-        'emisison_date',
+        'emission_date',
         'verified',
     ];
 
     protected $casts = [
-        'type' => 'integer'
+        'type' => 'integer',
+        'verified' => 'boolean'
     ];
 
-    public function person()
+    public function person(): BelongsTo
     {
         return $this->belongsTo(Person::class, 'person_id');
     }

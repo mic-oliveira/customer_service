@@ -17,8 +17,9 @@ class CreateDocumentsTable extends Migration
             $table->uuid('id')->primary();
             $table->string('document');
             $table->integer('type');
-            $table->date('emisison_date');
+            $table->date('emission_date');
             $table->boolean('verified')->default(false);
+            $table->dateTimeTz('verified_at')->nullable();
             $table->foreignUuid('person_id')->constrained('people');
             $table->json('metadata')->nullable();
             $table->timestamps();
