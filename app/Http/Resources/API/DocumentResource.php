@@ -15,6 +15,7 @@ class DocumentResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'document' => $this->document,
             'type' => $this->type,
             'emission_date' => $this->emission_date,

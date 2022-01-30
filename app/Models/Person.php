@@ -20,7 +20,7 @@ class Person extends Model
     ];
 
     protected $casts = [
-        'status' => PersonStatus::class
+        'status' => PersonStatus::class,
     ];
 
     public function addresses(): HasMany

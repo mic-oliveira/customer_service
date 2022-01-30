@@ -17,7 +17,7 @@ class PersonResource extends JsonResource
         return [
             "id" => $this->id,
             "name" => $this->name,
-            "status" => $this->status->name,
+            "status" => $this->status->value,
             "birthdate" => $this->birthdate,
             "addresses" => AddressResource::collection($this->addresses ?? []),
             "documents" => DocumentResource::collection($this->documents ?? []),

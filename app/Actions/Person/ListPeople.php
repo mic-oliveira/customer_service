@@ -19,6 +19,7 @@ class ListPeople
                 AllowedFilter::partial('name'),
                 AllowedFilter::partial('document', 'documents.document')
             ])
+            ->orderBy('name')
             ->with(['addresses', 'addresses.neighborhood', 'addresses.neighborhood.city', 'documents']
             )->simplePaginate();
     }
