@@ -21,6 +21,7 @@ class Person extends Model
 
     protected $casts = [
         'status' => PersonStatus::class,
+        'birthdatye' => 'date'
     ];
 
     public function addresses(): HasMany

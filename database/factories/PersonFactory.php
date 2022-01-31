@@ -16,7 +16,7 @@ class PersonFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'birthdate' => $this->faker->dateTimeBetween('-30 years', '-20 years'),
+            'birthdate' => $this->faker->date(),
             'status' => PersonStatus::class,
         ];
     }
