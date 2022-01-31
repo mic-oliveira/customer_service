@@ -15,7 +15,7 @@ class CityFactory extends Factory
     public function definition()
     {
         return [
-            'city_name' => $this->faker->city(),
+            'name' => $this->faker->city(),
             'code' => $this->faker->numerify('#####'),
             'generic_zipcode' => $this->faker->numerify('#####-###'),
             'state_id' => State::factory(),

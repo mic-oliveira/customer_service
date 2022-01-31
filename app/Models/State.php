@@ -13,7 +13,7 @@ class State extends Model
 
     protected $fillable = [
         'name',
-        'uf',
+        'fu_shortname',
         'country_id',
     ];
 

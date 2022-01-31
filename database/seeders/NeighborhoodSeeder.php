@@ -13,6 +13,6 @@ class NeighborhoodSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // Neighborhood::factory(['name' => 'Alto da Boa '])
     }
 }

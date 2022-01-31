@@ -16,7 +16,7 @@ class StateFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'uf' => $this->faker->randomElement(['RJ', 'RO', 'RS']),
+            'fu_shortname' => $this->faker->randomElement(['RJ', 'RO', 'RS']),
             'country_id' => Country::factory()
         ];
     }

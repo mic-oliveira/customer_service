@@ -8,8 +8,7 @@ use Lorisleiva\Actions\Concerns\AsAction;
 class CreateAddress
 {
     use AsAction;
-
-
+    
     public function __construct(private Address $address)
     {
     }

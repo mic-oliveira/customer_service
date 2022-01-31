@@ -15,9 +15,9 @@ class CreateCitiesTable extends Migration
     {
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
-            $table->string('city_name');
-            $table->string('code');
-            $table->string('generic_zipcode');
+            $table->string('name');
+            $table->string('code')->comment('IBGE CODE FROM BR CITIES');
+            $table->string('generic_zipcode')->nullable();
             $table->foreignId('state_id')->constrained('states');
             $table->json('metadata')->nullable();
             $table->timestamps();

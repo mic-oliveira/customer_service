@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Country;
 use Illuminate\Database\Seeder;
 
 class CountrySeeder extends Seeder
@@ -13,6 +14,6 @@ class CountrySeeder extends Seeder
      */
     public function run()
     {
-        //
+        Country::factory()->state(['name' => 'Brazil', 'country_code' => 'BR', 'currency_default' => 'BRL'])->create();
     }
 }
