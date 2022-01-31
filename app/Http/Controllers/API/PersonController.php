@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Actions\Person\CreatePersonAction;
+use App\Actions\Person\CreatePerson;
 use App\Actions\Person\FindPerson;
 use App\Actions\Person\ListPeople;
 use App\Actions\Person\UpdatePerson;
@@ -28,7 +28,7 @@ class PersonController extends Controller
 
     public function store(StorePersonRequest $request): PersonResource
     {
-        return PersonResource::make(CreatePersonAction::run($request->all()));
+        return PersonResource::make(CreatePerson::run($request->all()));
     }
 
 

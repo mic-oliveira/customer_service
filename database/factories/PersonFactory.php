@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Address;
+use App\Enums\PersonStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PersonFactory extends Factory
@@ -17,6 +17,7 @@ class PersonFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'birthdate' => $this->faker->dateTimeBetween('-30 years', '-20 years'),
+            'status' => PersonStatus::class,
         ];
     }
 }
