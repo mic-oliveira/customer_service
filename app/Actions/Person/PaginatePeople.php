@@ -8,7 +8,7 @@ use Lorisleiva\Actions\Concerns\AsAction;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
 
-class ListPeople
+class PaginatePeople
 {
     use AsAction;
 

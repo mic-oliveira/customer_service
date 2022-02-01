@@ -17,7 +17,7 @@ class PersonFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'birthdate' => $this->faker->date(),
-            'status' => PersonStatus::class,
+            'status' => PersonStatus::ACTIVE,
         ];
     }
 }
