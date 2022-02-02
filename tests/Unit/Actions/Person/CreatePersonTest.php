@@ -17,8 +17,13 @@ class CreatePersonTest extends TestCase
         $person = Person::factory()->state(['status' => PersonStatus::ACTIVE])->make();
         $result = CreatePerson::run($person->toArray());
         $this->assertEquals($person->name, $result->name);
-
         $this->assertEquals($person->birthdate, $result->birthdate);
         $this->assertEquals($person->status, $result->status);
+    }
+
+    public function test_should_not_create_people()
+    {
+        $this->expectException(\Exception::class);
+        $result = CreatePerson::run([]);
     }
 }

@@ -22,6 +22,9 @@ class UpdatePerson
     {
         DB::beginTransaction();
         try {
+            if (empty($person['name'])) {
+                throw new \Exception('Name is empty', 500);
+            }
             $updatedPerson = Person::findOrFail($id);
             $updatedPerson->fill($person);
             $updatedPerson->saveOrFail();
