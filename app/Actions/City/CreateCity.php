@@ -2,6 +2,7 @@
 
 namespace App\Actions\City;
 
+use App\Models\City;
 use Lorisleiva\Actions\Concerns\AsAction;
 
 class CreateCity
@@ -10,5 +11,6 @@ class CreateCity
 
     public function handle()
     {
+        $c = new City();
     }
 }

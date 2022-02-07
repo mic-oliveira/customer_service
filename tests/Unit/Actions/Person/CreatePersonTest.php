@@ -19,11 +19,12 @@ class CreatePersonTest extends TestCase
         $this->assertEquals($person->name, $result->name);
         $this->assertEquals($person->birthdate, $result->birthdate);
         $this->assertEquals($person->status, $result->status);
+        $this->assertDatabaseCount('people', 1);
     }
 
     public function test_should_not_create_people()
     {
         $this->expectException(\Exception::class);
-        $result = CreatePerson::run([]);
+        CreatePerson::run([]);
     }
 }

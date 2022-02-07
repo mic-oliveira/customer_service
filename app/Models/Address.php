@@ -17,6 +17,7 @@ class Address extends Model
         'address_type',
         'number',
         'person_id',
+        'zipcode',
         'neighborhood_id',
     ];
 

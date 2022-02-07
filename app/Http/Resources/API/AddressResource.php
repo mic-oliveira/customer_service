@@ -16,10 +16,7 @@ class AddressResource extends JsonResource
             "number" => $this->number,
             "complement" => $this->complement,
             "zipcode" => $this->zipcode,
-            "neighborhood" => $this->neighborhood->name,
-            "neighborhood_id" => $this->neighborhood_id,
-            "city" => $this->neighborhood->city->name,
-            "state" => $this->neighborhood->city->state->name
+            "neighborhood" => NeighborhoodResource::make($this->neighborhood),
         ];
     }
 }

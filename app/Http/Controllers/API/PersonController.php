@@ -7,7 +7,6 @@ use App\Actions\Person\FindPerson;
 use App\Actions\Person\PaginatePeople;
 use App\Actions\Person\UpdatePerson;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StorePersonRequest;
 use App\Http\Resources\API\PersonResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
@@ -23,7 +22,7 @@ class PersonController extends Controller
         return PersonResource::collection(PaginatePeople::run());
     }
 
-    public function store(StorePersonRequest $request): PersonResource
+    public function store(Request $request): PersonResource
     {
         return PersonResource::make(CreatePerson::run($request->all()));
     }

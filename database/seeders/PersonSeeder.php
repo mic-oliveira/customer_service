@@ -19,10 +19,10 @@ class PersonSeeder extends Seeder
     {
         Person::factory()->count(10)
             ->has(
-                Address::factory()->for(Neighborhood::factory()->state(['city_id' => 1]), 'neighborhood')->count(2),
+                Address::factory()->for(Neighborhood::factory()->state(['city_id' => 1]), 'neighborhood')->count(1),
                 'addresses'
             )
-            ->has(Document::factory()->count(2), 'documents')
+            ->has(Document::factory()->count(1), 'documents')
             ->create();
     }
 }

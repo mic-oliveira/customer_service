@@ -16,5 +16,6 @@ class UpdateOrCreateAddresses
                 UpdateOrCreateAddress::run(array_merge($address, ['person_id' => $person_id]), $address['id'] ?? null)
             );
         }
+        return $createdOrUpdatedAddresses;
     }
 }

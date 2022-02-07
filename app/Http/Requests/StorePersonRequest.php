@@ -27,7 +27,7 @@ class StorePersonRequest extends FormRequest
             "name" => ['required'],
             "status" => ['required'],
             "birthdate" => ['required'],
-            "addresses" => ['sometimes', 'required'],
+            "addresses" => ['required'],
             "documents" => ['sometimes', 'required'],
         ];
     }
