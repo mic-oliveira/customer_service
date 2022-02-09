@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Country;
 use App\Models\State;
 use Illuminate\Database\Seeder;
 
@@ -49,7 +50,7 @@ class StateSeeder extends Seeder
                     'fu_code' => $state['fu_code'],
                     'fu_shortname' => $state['fu_shortname'],
                     'name' => mb_strtoupper($state['name']),
-                    'country_id' => 1
+                    'country_id' => Country::where('name', 'Brazil')->get()->first()->id
                 ]
             );
         });
