@@ -19,6 +19,7 @@ class Document extends Model
         'type',
         'emission_date',
         'verified',
+        'person_id'
     ];
 
     protected $casts = [

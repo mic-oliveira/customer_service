@@ -14,7 +14,10 @@ class UpdatePersonTest extends TestCase
     public function test_should_update_person()
     {
         $id = Person::factory()->create()->id;
-        $updatedPerson = UpdatePerson::run(['name' => 'Marmota Mota', 'birthdate' => '2000-01-01'], $id);
+        $updatedPerson = UpdatePerson::run(
+            ['name' => 'Marmota Mota', 'birthdate' => '2000-01-01', 'addresses' => [], 'documents' => []],
+            $id
+        );
         $this->assertEquals('Marmota Mota', $updatedPerson->name);
         $this->assertEquals('2000-01-01', $updatedPerson->birthdate);
     }

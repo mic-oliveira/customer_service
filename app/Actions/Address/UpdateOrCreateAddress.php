@@ -13,8 +13,10 @@ class UpdateOrCreateAddress
     public function handle(array $address, string|int $address_id = null): Address
     {
         try {
-            $neighborhood = CreateNeighborhood::run($address['neighborhood']);
-            $address = array_merge($address, ['neighborhood_id' => $neighborhood->id]);
+            if (array_key_exists('neighborhood', $address)) {
+                $neighborhood = CreateNeighborhood::run($address['neighborhood']);
+                $address = array_merge($address, ['neighborhood_id' => $neighborhood->id]);
+            }
             return match (empty($address_id)) {
                 true => CreateAddress::run($address),
                 false => UpdateAddress::run($address, $address_id)
