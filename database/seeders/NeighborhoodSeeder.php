@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Neighborhood;
 use Illuminate\Database\Seeder;
 
 class NeighborhoodSeeder extends Seeder
@@ -13,6 +14,6 @@ class NeighborhoodSeeder extends Seeder
      */
     public function run()
     {
-        // Neighborhood::factory(['name' => 'Alto da Boa '])
+        Neighborhood::factory(['city_id' => 1])->count(20)->create();
     }
 }
